@@ -10,11 +10,9 @@ play.addEventListener('click', function () {
         session -= 1;
         console.log(session);
         if(session == 0){
-            clearInterval(countdown);
-            session = 25;
+            resetTimer();
         }
     }, 1000);
-
 });
 
 pause.addEventListener('click', function () {
@@ -22,9 +20,7 @@ pause.addEventListener('click', function () {
     clearInterval(countdown);
 });
 
-
-
-
-
-
-
+function resetTimer(){
+    clearInterval(countdown);
+    session = 25;
+}
