@@ -1,81 +1,93 @@
 const display = document.querySelector(".display");
-const play = document.querySelector(".play");
-const pause = document.querySelector(".pause");
-const stopBtn = document.querySelector(".stop");
-const resetBtn = document.querySelector(".reset");
+const btns = document.querySelector(".btn");
 const session = document.querySelector("#session");
 const breakSession = document.querySelector("#break");
 const times = document.querySelectorAll("#time");
-let result = session.value;
+let timeLeft = session.value*60;
 let sessionTime;
 let isBreak = false;
 
 resetTimer();
-session.addEventListener('change', function(){
-    result = session.value;
+display.textContent = `Session: ${convertToTime(timeLeft)}`;
+
+session.addEventListener('change', function () {
+  timeLeft = session.value*60;
+  display.textContent = `Session: ${convertToTime(timeLeft)}`;
 });
 
-play.addEventListener('click', function () {
+btns.addEventListener('click', (e) => {
+
+  const { target } = e;
+
+  if (target.matches("#stop")) {
+    stopTimer();
+    display.textContent = `Session: ${convertToTime(session.value*60)}`;
+  }
+
+  if (target.matches("#reset")) {
+    resetTimer();
+    display.textContent = `Session: ${convertToTime(session.value*60)}`;
+  }
+
+  if (target.matches("#play")) {
     session.disabled = true;
     breakSession.disabled = true;
     countdown();
-});
+  }
 
-pause.addEventListener('click', function () {
+  if (target.matches("#pause")) {
     console.log("Pause");
     clearInterval(sessionTime);
+  }
+
 });
 
-stopBtn.addEventListener('click', stopTimer);
+function countdown() {
 
-resetBtn.addEventListener('click', resetTimer);
+  sessionTime = setInterval(function () {
 
+    timeLeft --;
+    
 
-function countdown(){
-    sessionTime = setInterval(function(){
+    // let timeInMins = Math.floor(timeLeft/60);
+    // let timeInSec = timeLeft - timeInMins*60;
+    // let finalTime = 
 
-        result -= 1;
-        
-        display.textContent =  (!isBreak) ? `Session: ${result}`
-                                          : `Break: ${result}`;
+    display.textContent = (!isBreak) ? `Session: ${convertToTime(timeLeft)}`
+      : `Break: ${convertToTime(timeLeft)}`;
 
-        console.log(`session: ${result}`);
-        if (result == 0){
-            isBreak = !isBreak;
-            if(!isBreak){
-                result = session.value;
-                console.log("Session Start");
-            } else {
-                result = breakSession.value;
-                console.log('Break Start');
-            }
-        }
-    },1000);
+    console.log(`session: ${convertToTime(timeLeft)}`);
+    if (timeLeft == 0) {
+      isBreak = !isBreak;
+      if (!isBreak) {
+        timeLeft = session.value*60;
+        console.log("Session Start");
+      } else {
+        timeLeft = breakSession.value*60;
+        console.log('Break Start');
+      }
+    }
+  }, 1000);
 }
 
-function resetTimer(){
-    session.disabled = false;
-    breakSession.disabled = false;
-    session.value = 25;
-    breakSession.value = 5;
-    clearInterval(sessionTime);
+function stopTimer() {
+  session.disabled = false;
+  breakSession.disabled = false;
+  timeLeft = session.value*60;
+  isBreak = false;
+  clearInterval(sessionTime);
 }
 
-function stopTimer(){
-    session.disabled = false;
-    breakSession.disabled = false;
-    clearInterval(sessionTime);
-    display.textContent = `Session: ${session.value}`;
+function resetTimer() {
+  breakSession.value = 5;
+  session.value = 25;
+  stopTimer();
 }
 
-
-
-
-
-
-
-
-
-
+function convertToTime(sec){
+  let timeInMins = Math.floor(sec/60);
+  let timeInSec = sec % 60;
+  return `${timeInMins.toString().padStart(2,'0')}:${timeInSec.toString().padStart(2,'0')}`
+}
 
 
