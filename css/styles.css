@@ -4,6 +4,7 @@ html, body{
 
 h1{
     font-size: 55px;
+    font-family: "Indie Flower", cursive;
 }
 
 input::-webkit-outer-spin-button,
