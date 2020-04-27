@@ -5,7 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pomodoro Clock</title>
+  <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+
 
 </head>
 
@@ -18,36 +21,39 @@
 
     <div class="pomodoro">
 
-      <div class="inputs">
-        <div class="session-input">
-          <label for="session">Session: </label>
-          <div class="input-session">
-            <p id="inc-session">^</p>
-            <input type="number" name="session" id="session" min="1" readonly>
-            <p id="dec-session">⌄</p>
+      <div class="content">
+
+        <div class="inputs">
+          <div class="session-input">
+            <label for="session">Session</label>
+            <div class="input-session">
+              <i class='fas fa-angle-up' id="inc-session" style='font-size:36px'></i>
+              <input type="number" name="session" id="session" min="1" readonly>
+              <i class='fas fa-angle-down' id="dec-session" style='font-size:36px'></i>
+            </div>
           </div>
-          
+
+          <div class="break-input">
+            <label for="break">Break</label>
+            <div class="input-break">
+              <i class='fas fa-angle-up' id="inc-break" style='font-size:36px'></i>
+              <input type="number" name="break" id="break" min="1" readonly>
+              <i class='fas fa-angle-down' id="dec-break" style='font-size:36px'></i>
+            </div>
+
+          </div>
         </div>
 
-        <div class="break-input">
-          <label for="break">Break: </label>
-          <div class="input-break">
-            <p id="inc-break">^</p>
-            <input type="number" name="break" id="break" min="1" readonly>
-            <p id="dec-break">⌄</p>
-          </div>
-          
+        <div class="display"></div>
+
+
+        <div class="btn">
+          <i class='fas fa-play' id="play" style='font-size:36px'></i>
+          <i class='fas fa-pause' id="pause" style='font-size:36px'></i>
+          <i class='fas fa-stop' id="stop" style='font-size:36px'></i>
+          <i class='fas fa-redo' id="reset" style='font-size:36px'></i>
         </div>
-      </div>
 
-      <div class="display"></div>
-
-
-      <div class="btn">
-        <i class='fas fa-play' id="play" style='font-size:36px'></i>
-        <i class='fas fa-pause' id="pause" style='font-size:36px'></i>
-        <i class='fas fa-stop' id="stop" style='font-size:36px'></i>
-        <i class='fas fa-redo' id="reset" style='font-size:36px'></i>
       </div>
 
     </div>

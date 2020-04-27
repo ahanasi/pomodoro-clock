@@ -2,6 +2,10 @@ html, body{
     height: 100%
 }
 
+h1{
+    font-size: 55px;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -13,9 +17,26 @@ input[type=number] {
     -moz-appearance: textfield;
     outline: none;
 }
+
+input {
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    padding: none;
+    background-color: transparent;
+    width: 7.5rem;
+    text-align: center;
+    color: wheat;
+  }  
+
+.btn{
+    display: flex;
+    justify-content: space-evenly;
+    width: 25rem;
+}
  
 .btn i:hover {
-    color: aqua;
+    opacity: 60%;
 }
 
 .container{
@@ -32,7 +53,22 @@ input[type=number] {
     width: 700px;
     min-height: 700px;
     background-size: cover;
+    font-family: 'Indie Flower', cursive;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+    color: wheat;
 
+}
+
+.content{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 36rem;
 }
 
 .session-input, .break-input{
@@ -44,9 +80,25 @@ input[type=number] {
 .inputs{
     display: flex;
     flex-flow: row;
+    justify-content: space-around;
+    width: 40rem;
+    margin-top: 145px;
+    
 }
 
 .input-session, .input-break{
     display: flex;
     flex-flow: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-session i:hover, .input-break i:hover{
+    opacity: 60%;
+}
+
+.display{
+    text-align: center;
+    width: min-content;
+    margin-top: -36px;
 }

@@ -7,9 +7,10 @@ const breakSession = document.querySelector("#break");
 let timeLeft;
 let sessionTime;
 let isBreak = false;
+let disableBtns = false;
 
 resetTimer();
-display.textContent = `Session: ${convertToTime(session.value*60)}`;
+display.textContent = `Session ${convertToTime(session.value*60)}`;
 
 btns.addEventListener('click', (e) => {
 
@@ -17,17 +18,16 @@ btns.addEventListener('click', (e) => {
 
   if (target.matches("#stop")) {
     stopTimer();
-    display.textContent = `Session: ${convertToTime(session.value * 60)}`;
+    display.textContent = `Session ${convertToTime(session.value * 60)}`;
   }
 
   if (target.matches("#reset")) {
     resetTimer();
-    display.textContent = `Session: ${convertToTime(session.value * 60)}`;
+    display.textContent = `Session ${convertToTime(session.value * 60)}`;
   }
 
   if (target.matches("#play")) {
-    session.disabled = true;
-    breakSession.disabled = true;
+    disableBtns = true;
     countdown();
   }
 
@@ -42,35 +42,39 @@ seshControl.addEventListener('click', (e) => {
 
   const {target} = e;
 
-  if(target.matches("#inc-session")){
-    session.stepUp();
-    timeLeft = session.value * 60;
-    display.textContent = `Session: ${convertToTime(session.value*60)}` ;
+  if (!disableBtns){
+    if(target.matches("#inc-session")){
+      session.stepUp();
+      timeLeft = session.value * 60;
+      display.textContent = `Session ${convertToTime(session.value*60)}` ;
+    }
+  
+    if(target.matches("#dec-session")){
+      session.stepDown();
+      timeLeft = session.value * 60;
+      display.textContent = `Session ${convertToTime(session.value*60)}` ;
+    }
   }
-
-  if(target.matches("#dec-session")){
-    session.stepDown();
-    timeLeft = session.value * 60;
-    display.textContent = `Session: ${convertToTime(session.value*60)}` ;
-  }
-
 });
 
 breakControl.addEventListener('click', (e) => {
   const {target} = e;
 
-  if(target.matches("#inc-break")){
-    breakSession.stepUp();
-    timeLeft = session.value * 60;
-    display.textContent = `Session: ${convertToTime(session.value*60)}` ;
+  if(!disableBtns){
+    if(target.matches("#inc-break")){
+      breakSession.stepUp();
+      timeLeft = session.value * 60;
+      display.textContent = `Session ${convertToTime(session.value*60)}` ;
+    }
+  
+    if(target.matches("#dec-break")){
+      breakSession.stepDown();
+      timeLeft = session.value * 60;
+      display.textContent = `Session ${convertToTime(session.value*60)}` ;
+    }  
   }
 
-  if(target.matches("#dec-break")){
-    breakSession.stepDown();
-    timeLeft = session.value * 60;
-    display.textContent = `Session: ${convertToTime(session.value*60)}` ;
-  }
-
+  
 });
 
 function countdown() {
@@ -79,8 +83,8 @@ function countdown() {
 
     timeLeft--;
 
-    display.textContent = (!isBreak) ? `Session: ${convertToTime(timeLeft)}`
-      : `Break: ${convertToTime(timeLeft)}`;
+    display.textContent = (!isBreak) ? `Session ${convertToTime(timeLeft)}`
+      : `Break ${convertToTime(timeLeft)}`;
 
     console.log(`session: ${convertToTime(timeLeft)}`);
     if (timeLeft == 0) {
@@ -97,8 +101,7 @@ function countdown() {
 }
 
 function stopTimer() {
-  session.disabled = false;
-  breakSession.disabled = false;
+  disableBtns = false;
   timeLeft = session.value * 60;
   isBreak = false;
   clearInterval(sessionTime);
