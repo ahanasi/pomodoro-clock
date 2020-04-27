@@ -12,7 +12,7 @@
 <body>
 
   <div id="container">
-    <h1>Session</h1>
+    <h1>Pomodoro Clock</h1>
     <div class="display"></div>
     <label for="session">Session: </label>
     <input type="number" name="session" id="session" class="time" min="1">
@@ -20,10 +20,10 @@
     <input type="number" name="break" id="break" class="time" min="1">
 
     <div class="btn">
-      <button class="btn" id="play">Play</button>
-      <button class="btn" id="pause">Pause</button>
-      <button class="btn" id="stop">Stop</button>
-      <button class="btn" id="reset">Reset</button>
+      <i class='fas fa-play' id="play" style='font-size:36px'></i>
+      <i class='fas fa-pause' id="pause" style='font-size:36px'></i>
+      <i class='fas fa-stop' id="stop" style='font-size:36px'></i>
+      <i class='fas fa-redo' id="reset" style='font-size:36px'></i>
     </div>
 
 
@@ -32,6 +32,7 @@
 
 
   <script src="./js/pomodoro.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </body>
 
 </html>
