@@ -19,10 +19,25 @@
     <div class="pomodoro">
 
       <div class="inputs">
-        <label for="session">Session: </label>
-        <input type="number" name="session" id="session" class="time" min="1">
-        <label for="break">Break: </label>
-        <input type="number" name="break" id="break" class="time" min="1">
+        <div class="session-input">
+          <label for="session">Session: </label>
+          <div class="input-session">
+            <p id="inc-session">^</p>
+            <input type="number" name="session" id="session" min="1" readonly>
+            <p id="dec-session">⌄</p>
+          </div>
+          
+        </div>
+
+        <div class="break-input">
+          <label for="break">Break: </label>
+          <div class="input-break">
+            <p id="inc-break">^</p>
+            <input type="number" name="break" id="break" min="1" readonly>
+            <p id="dec-break">⌄</p>
+          </div>
+          
+        </div>
       </div>
 
       <div class="display"></div>

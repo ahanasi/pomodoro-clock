@@ -2,11 +2,18 @@ html, body{
     height: 100%
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
-
-
-
-
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+    outline: none;
+}
+ 
 .btn i:hover {
     color: aqua;
 }
@@ -26,4 +33,20 @@ html, body{
     min-height: 700px;
     background-size: cover;
 
+}
+
+.session-input, .break-input{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.inputs{
+    display: flex;
+    flex-flow: row;
+}
+
+.input-session, .input-break{
+    display: flex;
+    flex-flow: row;
 }
