@@ -1,3 +1,29 @@
+html, body{
+    height: 100%
+}
+
+
+
+
+
+
 .btn i:hover {
     color: aqua;
+}
+
+.container{
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.pomodoro{
+    background-image: url('./images/5ea6276c74a70.png');
+    background-repeat: no-repeat;
+    width: 700px;
+    min-height: 700px;
+    background-size: cover;
+
 }

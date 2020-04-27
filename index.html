@@ -11,22 +11,31 @@
 
 <body>
 
-  <div id="container">
+  <div class="container">
+
+
     <h1>Pomodoro Clock</h1>
-    <div class="display"></div>
-    <label for="session">Session: </label>
-    <input type="number" name="session" id="session" class="time" min="1">
-    <label for="break">Break: </label>
-    <input type="number" name="break" id="break" class="time" min="1">
 
-    <div class="btn">
-      <i class='fas fa-play' id="play" style='font-size:36px'></i>
-      <i class='fas fa-pause' id="pause" style='font-size:36px'></i>
-      <i class='fas fa-stop' id="stop" style='font-size:36px'></i>
-      <i class='fas fa-redo' id="reset" style='font-size:36px'></i>
+    <div class="pomodoro">
+
+      <div class="inputs">
+        <label for="session">Session: </label>
+        <input type="number" name="session" id="session" class="time" min="1">
+        <label for="break">Break: </label>
+        <input type="number" name="break" id="break" class="time" min="1">
+      </div>
+
+      <div class="display"></div>
+
+
+      <div class="btn">
+        <i class='fas fa-play' id="play" style='font-size:36px'></i>
+        <i class='fas fa-pause' id="pause" style='font-size:36px'></i>
+        <i class='fas fa-stop' id="stop" style='font-size:36px'></i>
+        <i class='fas fa-redo' id="reset" style='font-size:36px'></i>
+      </div>
+
     </div>
-
-
 
   </div>
 
