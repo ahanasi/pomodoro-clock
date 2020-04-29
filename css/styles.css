@@ -2,6 +2,10 @@ html, body{
     height: 100%
 }
 
+audio{
+    display: none;
+}
+
 h1{
     font-size: 55px;
     font-family: "Indie Flower", cursive;

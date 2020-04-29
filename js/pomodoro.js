@@ -4,11 +4,13 @@ const seshControl = document.querySelector(".input-session");
 const breakControl = document.querySelector(".input-break"); 
 const session = document.querySelector("#session");
 const breakSession = document.querySelector("#break");
+const audio = document.querySelector("#SFX");
 let timeLeft;
 let sessionTime;
 let sessionTimeOn = false;
 let isBreak = false;
 let disableBtns = false;
+
 
 resetTimer();
 display.textContent = `Session ${convertToTime(session.value*60)}`;
@@ -94,6 +96,7 @@ function countdown() {
 
     console.log(`session: ${convertToTime(timeLeft)}`);
     if (timeLeft == 0) {
+      audio.play();
       isBreak = !isBreak;
       if (!isBreak) {
         timeLeft = session.value * 60;
