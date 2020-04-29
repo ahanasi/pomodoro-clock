@@ -122,9 +122,16 @@ function resetTimer() {
 }
 
 function convertToTime(sec) {
+  let timeInHrs = Math.floor(sec/3600);
+  sec %= 3600;
   let timeInMins = Math.floor(sec / 60);
   let timeInSec = sec % 60;
-  return `${timeInMins.toString().padStart(2, '0')}:${timeInSec.toString().padStart(2, '0')}`
+  if (timeInHrs == 0){
+    return `${timeInMins.toString().padStart(2, '0')}:${timeInSec.toString().padStart(2, '0')}`;
+  } else {
+    return `${timeInHrs.toString().padStart(2, '0')}:${timeInMins.toString().padStart(2, '0')}:${timeInSec.toString().padStart(2, '0')}`;
+  }
+  
 }
 
 
