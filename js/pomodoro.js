@@ -6,6 +6,7 @@ const session = document.querySelector("#session");
 const breakSession = document.querySelector("#break");
 let timeLeft;
 let sessionTime;
+let sessionTimeOn = false;
 let isBreak = false;
 let disableBtns = false;
 
@@ -27,13 +28,18 @@ btns.addEventListener('click', (e) => {
   }
 
   if (target.matches("#play")) {
-    disableBtns = true;
-    countdown();
+    if(sessionTimeOn == false){
+      disableBtns = true;
+      countdown();
+    }   
+    
   }
 
   if (target.matches("#pause")) {
     console.log("Pause");
     clearInterval(sessionTime);
+    sessionTimeOn = false;
+    
   }
 
 });
@@ -98,6 +104,7 @@ function countdown() {
       }
     }
   }, 1000);
+  sessionTimeOn = true;
 }
 
 function stopTimer() {
@@ -105,6 +112,7 @@ function stopTimer() {
   timeLeft = session.value * 60;
   isBreak = false;
   clearInterval(sessionTime);
+  sessionTimeOn = false;
 }
 
 function resetTimer() {
